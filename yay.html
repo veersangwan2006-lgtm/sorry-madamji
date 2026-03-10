@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yayyyyy 😚</title>
+
+<style>
+
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+color:white;
+text-align:center;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:80px 20px;
+}
+
+h1{
+font-size:2.6rem;
+line-height:1.6;
+}
+
+.heart{
+position:fixed;
+bottom:-20px;
+font-size:24px;
+animation:float 6s linear;
+pointer-events:none;
+}
+
+@keyframes float{
+from{transform:translateY(0);opacity:1;}
+to{transform:translateY(-100vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>
+Yayyyyyy 😚<br><br>
+
+iloveyouuuuu sooo muchhhh  
+melii jaaannnnn 😚😚😚😚😚😚😚😚😚😚😚😚😚😚😚  
+
+<br><br>
+
+muahhh muaahhhhh 😚😚💋💋
+</h1>
+
+</div>
+
+<script>
+
+setInterval(()=>{
+const heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML=Math.random()>0.5?"❤️":"😚";
+heart.style.left=Math.random()*100+"vw";
+document.body.appendChild(heart);
+setTimeout(()=>heart.remove(),6000);
+},300);
+
+</script>
+
+</body>
+</html>
