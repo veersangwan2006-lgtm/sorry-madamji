@@ -23,7 +23,6 @@ padding:60px 20px;
 
 h1{
 font-size:2.5rem;
-margin-bottom:20px;
 }
 
 p{
@@ -40,31 +39,21 @@ padding:14px 26px;
 border-radius:30px;
 font-size:1.1rem;
 cursor:pointer;
+margin:12px;
+}
+
+.buttons{
 margin-top:30px;
 }
 
-.reply{
-margin-top:25px;
-font-size:1.3rem;
-}
+/* shake animation before escaping */
 
-.heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-animation:float 6s linear;
-pointer-events:none;
-}
-
-@keyframes float{
-from{
-transform:translateY(0);
-opacity:1;
-}
-to{
-transform:translateY(-100vh);
-opacity:0;
-}
+@keyframes shake{
+0%{transform:translateX(0);}
+25%{transform:translateX(-5px);}
+50%{transform:translateX(5px);}
+75%{transform:translateX(-5px);}
+100%{transform:translateX(0);}
 }
 
 </style>
@@ -97,28 +86,47 @@ I am trying to be a better bf for you because you are really important to me.
 Please mujhe maaf krdo🥺😚
 </p>
 
-<button onclick="forgive()">Tap if you forgive me 🥺</button>
-
-<p class="reply" id="reply"></p>
+<div class="buttons">
+<button onclick="nextPage()">Will you forgive me? 🥺</button>
+<button id="noBtn">No 😤</button>
+</div>
 
 </div>
 
 <script>
 
-function forgive(){
-document.getElementById("reply").innerHTML =
-"I promise I will try to be better for you ❤️";
+function nextPage(){
+window.location.href="yay.html";
 }
 
-setInterval(()=>{
-const heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="❤️";
-heart.style.left=Math.random()*100+"vw";
-heart.style.fontSize=(Math.random()*10+16)+"px";
-document.body.appendChild(heart);
-setTimeout(()=>heart.remove(),6000);
-},400);
+const noBtn=document.getElementById("noBtn");
+let running=false;
+
+function escapeButton(){
+
+if(running) return;
+running=true;
+
+noBtn.style.animation="shake 0.3s";
+
+setTimeout(()=>{
+
+const x=Math.random()*(window.innerWidth-noBtn.offsetWidth);
+const y=Math.random()*(window.innerHeight-noBtn.offsetHeight);
+
+noBtn.style.position="fixed";
+noBtn.style.left=x+"px";
+noBtn.style.top=y+"px";
+noBtn.style.animation="";
+
+running=false;
+
+},300);
+
+}
+
+noBtn.addEventListener("mouseover",escapeButton);
+noBtn.addEventListener("click",escapeButton);
 
 </script>
 
